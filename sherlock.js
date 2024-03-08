@@ -12,6 +12,7 @@ const rl = readline.createInterface({
 const urllist = JSON.parse(readFileSync('./urls.json', 'utf8'))
 
 
+
 rl.question('Gimme that username: ', async (username) => {
     console.clear()
     console.log(chalk.yellowBright(`Suche nach ${username} auf:\n`))
@@ -20,7 +21,11 @@ rl.question('Gimme that username: ', async (username) => {
     for(const service in urllist){
         try {
 
-            const response = await fetch(urllist[service].replace('{user}', `${username}`));
+            const response = await fetch(urllist[service].replace('{user}', `${username}`), {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+                }
+            });
             htmlContent = await response.text();
             
 
@@ -29,9 +34,10 @@ rl.question('Gimme that username: ', async (username) => {
 
             // if(service == 'Fiverr'){
             //     writeFileSync('./fiverrgut.html', htmlContent, 'utf8')
+            //     console.log(response.status)
             // } 
             
-            if (response.status == 404 || title.toLowerCase() == 'instagram' || title.toLowerCase() == 'facebook') {
+            if (response.status == 403 || response.status == 404 || title.toLowerCase() == 'instagram' || title.toLowerCase() == 'facebook') {
                 console.log(`${chalk.cyanBright("[")}${chalk.magentaBright('*')}${chalk.cyanBright(']')}`, `${service}:`, chalk.redBright('Kein User gefunden'));
             } else if(response.status == 200){
                 console.log(`${chalk.cyanBright("[")}${chalk.magentaBright('*')}${chalk.cyanBright(']')}`, `${service}:`, chalk.greenBright(`${urllist[service].replace('{user}', `${username}`)}`));
