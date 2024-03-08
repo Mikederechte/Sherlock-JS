@@ -7,6 +7,8 @@ Sherlock-JS will get updates such as: new links | a file where the user can put 
 
 If the Sherlock tool doesn't run propperly comment down below whats not working and I will try to fix it
 
+[ENGLISH VERSION IS CURRENTLY NOT AVAILABLE]
+
 
 
 
