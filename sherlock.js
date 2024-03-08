@@ -1,15 +1,20 @@
 import readline from 'readline'
 import fetch from 'node-fetch'
 import chalk from 'chalk'
-import { readFileSync, writeFileSync } from 'fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs'
 import cheerio from 'cheerio'
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+const foldername = 'saveduser';
 
 const urllist = JSON.parse(readFileSync('./urls.json', 'utf8'))
+
+if (!existsSync(foldername)) {
+    mkdirSync(foldername);
+}
 
 
 
