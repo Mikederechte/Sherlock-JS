@@ -11,7 +11,6 @@ const rl = readline.createInterface({
 const foldername = 'saveduser';
 
 const urllist = JSON.parse(readFileSync('./urls.json', 'utf8'))
-const onlynsfwsurl = JSON.parse(readFileSync('./nsfw.json', 'utf8'))
 
 if (!existsSync(foldername)) {
     mkdirSync(foldername);
