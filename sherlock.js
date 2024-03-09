@@ -28,7 +28,7 @@ rl.question('Gimme that username: ', async (username) => {
 
             const response = await fetch(urllist[service].replace('{user}', `${username}`), {
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
                 }
             });
             htmlContent = await response.text();
@@ -37,10 +37,10 @@ rl.question('Gimme that username: ', async (username) => {
             const $ = cheerio.load(htmlContent);
             const title = $('title').text()
 
-            // if(service == 'Fiverr'){
-            //     writeFileSync('./fiverrgut.html', htmlContent, 'utf8')
-            //     console.log(response.status)
-            // } 
+            if(service == 'YouNow'){
+                // writeFileSync('./twitter.html', htmlContent, 'utf8')
+                console.log(title)
+            } 
             
             if (response.status == 403 || response.status == 404 || title.toLowerCase() == 'instagram' || title.toLowerCase() == 'facebook') {
                 console.log(`${chalk.cyanBright("[")}${chalk.magentaBright('*')}${chalk.cyanBright(']')}`, `${service}:`, chalk.redBright('Kein User gefunden'));

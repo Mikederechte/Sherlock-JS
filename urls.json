@@ -6,5 +6,11 @@
     "xHamster (creator)": "https://xhamster.desi/creators/{user}",
     "Facebook": "https://facebook.com/{user}",
     "Pornhub": "https://pornhub.org/users/{user}",
+    "Flickr": "http://flickr.com/photos_{user}",
+    "Tumblr": "http://{user}.tumblr.com/",
+    "Vimeo": "https://vimeo.com/{user}",
+    "SoundCloud": "https://soundcloud.com/{user}",
+    "DLive": "https://dlive.tv/channel/{user}",
+    "DailyMotion": "http://www.dailymotion.com/user/{user}",
     "Fiverr": "https://www.fiverr.com/{user}"
 }
